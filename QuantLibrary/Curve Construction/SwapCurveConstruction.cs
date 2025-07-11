@@ -58,10 +58,10 @@ namespace QuantLibrary.Curve_Construction
 
             switch (curveInterpolationType)
             {
-                case CurveInterpolationType.LogLinearDf: DiscountCurveCalibrate = new DiscountCurveLogLinear(times, dfs);
+                case CurveInterpolationType.LogLinearDf: DiscountCurveCalibrate = new DiscountCurveLogLinear("", times, dfs);
                     break;
                 case CurveInterpolationType.CubicSplineDf:
-                    DiscountCurveCalibrate = new DiscountCurveCubicSpline(times, dfs);
+                    DiscountCurveCalibrate = new DiscountCurveCubicSpline("", times, dfs);
                     break;
                 default:
                     throw new Exception("Interpolation type not supported");

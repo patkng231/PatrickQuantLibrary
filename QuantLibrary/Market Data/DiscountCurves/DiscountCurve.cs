@@ -1,14 +1,16 @@
 ﻿
+using QuantLibrary.Market_Data;
+
 namespace QuantLibrary.DiscountCurves
 {
 
-    public abstract class DiscountCurve
+    public abstract class DiscountCurve : MarketData
     {
         public List<double> Times;
         public List<double> DiscountFactors;
 
         public int N;
-        public DiscountCurve(IEnumerable<double> times, IEnumerable<double> discountFactors)
+        public DiscountCurve(string name, IEnumerable<double> times, IEnumerable<double> discountFactors) : base(name)
         {
             Times = [.. times];
             DiscountFactors = [.. discountFactors];

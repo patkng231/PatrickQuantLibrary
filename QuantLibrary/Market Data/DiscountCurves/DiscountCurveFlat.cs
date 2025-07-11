@@ -9,7 +9,7 @@ namespace QuantLibrary.DiscountCurves
     public class DiscountCurveFlat : DiscountCurve
     {
         public readonly double Rate;
-        public DiscountCurveFlat(double rate) : base([0], [1])
+        public DiscountCurveFlat(string name, double rate) : base(name, [0], [1])
         {
             Rate = rate;
         }

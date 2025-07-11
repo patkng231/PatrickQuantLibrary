@@ -1,13 +1,14 @@
-﻿using MathNet.Numerics.Interpolation;
+﻿using QuantLibrary.DiscountCurves;
+using MathNet.Numerics.Interpolation;
 
 namespace QuantLibrary.DiscountCurves
 {
-    public class DiscountCurveLogLinear : DiscountCurve
+    public class DiscountCurveCubicSpline : DiscountCurve
     {
-        public LinearSpline Interpolator;
-        public DiscountCurveLogLinear(IEnumerable<double> times, IEnumerable<double> values) : base(times, values) 
+        public CubicSpline Interpolator;
+        public DiscountCurveCubicSpline(string name, IEnumerable<double> times, IEnumerable<double> values) : base(name, times, values)
         {
-            Interpolator = LinearSpline.Interpolate(times, values);
+            Interpolator = CubicSpline.InterpolateAkima(times, values);
         }
         public override double Df(double t)
         {
@@ -23,7 +24,7 @@ namespace QuantLibrary.DiscountCurves
         {
             Times = [.. times];
             DiscountFactors = [.. discountFactors];
-            Interpolator = LinearSpline.Interpolate(Times, DiscountFactors);
+            Interpolator = CubicSpline.InterpolateAkima(Times, DiscountFactors);
         }
     }
 }
